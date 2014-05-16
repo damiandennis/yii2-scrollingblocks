@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "damiandennis\\": ""
+            "damiandennis\\scrollingblocks\\": "src/widgets/"
         }
     }
 }
