@@ -1,0 +1,13 @@
+{
+    "name": "damiandennis/scrollingblocks",
+    "description": "\u001b[A Yii2 widget for displaying ima\u001b[ items like pinterest.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Damian Dennis",
+            "email": "damiandennis@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
