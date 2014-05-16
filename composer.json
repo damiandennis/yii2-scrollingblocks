@@ -1,5 +1,5 @@
 {
-    "name": "damiandennis/scrollingblocks",
+    "name": "damiandennis/yii2-scrollingblocks",
     "description": "\u001b[A Yii2 widget for displaying ima\u001b[ items like pinterest.",
     "license": "BSD-3-Clause",
     "authors": [
@@ -8,8 +8,8 @@
             "email": "damiandennis@gmail.com"
         }
     ],
-    "type": "yii2-extension",
     "minimum-stability": "dev",
+    "type": "yii2-extension",
     "require": {
         "php": ">=5.4",
         "yiisoft/yii2": "dev-master"
