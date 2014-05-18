@@ -8,13 +8,10 @@
 namespace damiandennis\scrollingblocks;
 
 use Yii;
-use yii\base\Widget;
+use yii\widgets\ListView;
 
-class ScrollingBlocks extends Widget
+class ScrollingBlocks extends ListView
 {
-    public function run()
-    {
-        echo "hello";
-        parent::run();
-    }
+    public $options = ['class' => 'scroll-block-view'];
+    public $pager = false;
 }

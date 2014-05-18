@@ -8,11 +8,18 @@
             "email": "damiandennis@gmail.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:damiandennis/Wookmark-jQuery.git"
+        }
+    ],
     "minimum-stability": "dev",
     "type": "yii2-extension",
     "require": {
         "php": ">=5.4",
-        "yiisoft/yii2": "dev-master"
+        "yiisoft/yii2": "dev-master",
+        "damiandennis/Wookmark-jQuery": "dev-master"
     },
     "autoload": {
         "psr-4": {
