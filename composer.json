@@ -15,7 +15,7 @@
         },
         {
             "type": "vcs",
-            "url": "git@github.com:damiandennis/imagesloaded"
+            "url": "git@github.com:damiandennis/imagesloaded.git"
         }
     ],
     "minimum-stability": "dev",
