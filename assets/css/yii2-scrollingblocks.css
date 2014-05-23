@@ -1,0 +1,12 @@
+
+.scroll-block-view {
+  position: relative;
+}
+
+.scroll-block-view .item {
+  box-sizing: border-box;
+}
+
+.scroll-block-view .item img {
+  max-width: 100%;
+}

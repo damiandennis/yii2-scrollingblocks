@@ -12,14 +12,18 @@
         {
             "type": "vcs",
             "url": "git@github.com:damiandennis/Wookmark-jQuery.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:damiandennis/imagesloaded"
         }
     ],
     "minimum-stability": "dev",
     "type": "yii2-extension",
     "require": {
         "php": ">=5.4",
-        "yiisoft/yii2": "dev-master",
-        "damiandennis/Wookmark-jQuery": "dev-master"
+        "damiandennis/Wookmark-jQuery": "master",
+        "damiandennis/imagesloaded": "master"
     },
     "autoload": {
         "psr-4": {
