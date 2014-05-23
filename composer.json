@@ -22,8 +22,8 @@
     "type": "yii2-extension",
     "require": {
         "php": ">=5.4",
-        "damiandennis/Wookmark-jQuery": "master",
-        "damiandennis/imagesloaded": "master"
+        "damiandennis/Wookmark-jQuery": "dev-master",
+        "damiandennis/imagesloaded": "dev-master"
     },
     "autoload": {
         "psr-4": {
