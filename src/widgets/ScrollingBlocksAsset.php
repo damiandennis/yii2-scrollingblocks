@@ -18,8 +18,9 @@ class ScrollingBlocksAsset extends AssetBundle
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../../assets/css');
-        $this->setupAssets('css', ['yii2-scrollingblocks']);
+        $this->setSourcePath(__DIR__ . '/../../assets');
+        $this->setupAssets('css', ['css/yii2-scrollingblocks']);
+        $this->setupAssets('js', ['js/yii2-scrollingblocks']);
         parent::init();
     }
 }

@@ -1,8 +1,8 @@
 <?php
 /**
  * User: Damian
- * Date: 19/05/14
- * Time: 6:05 AM
+ * Date: 24/05/14
+ * Time: 3:28 AM
  */
 
 namespace damiandennis\scrollingblocks;
@@ -13,13 +13,13 @@ namespace damiandennis\scrollingblocks;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class WookmarkAsset extends AssetBundle
+class ImagesLoadedAsset extends AssetBundle
 {
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../../../wookmark-jquery');
-        $this->setupAssets('js', ['jquery.wookmark']);
+        $this->setSourcePath(__DIR__ . '/../../../imagesloaded');
+        $this->setupAssets('js', ['imagesloaded.pkgd']);
         parent::init();
     }
 }

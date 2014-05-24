@@ -23,7 +23,8 @@
     "require": {
         "php": ">=5.4",
         "damiandennis/Wookmark-jQuery": "dev-master",
-        "damiandennis/imagesloaded": "dev-master"
+        "damiandennis/imagesloaded": "dev-master",
+        "damiandennis/spin.js": "dev-master"
     },
     "autoload": {
         "psr-4": {

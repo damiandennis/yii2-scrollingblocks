@@ -20,12 +20,14 @@ class ScrollingBlocks extends ListView
         'autoResize' => true,
         'align' => 'left',
         'flexibleWidth' => true,
-        'itemWidth' => '20%',
-        'offset' => 0
+        'itemWidth' => '33%',
+        'offset' => 0,
     ];
+    private $models;
 
     public function init()
     {
+        $models = $this->dataProvider->getModels();
         parent::init();
         $id = $this->getId();
         if (isset($this->itemOptions['class'])) {
@@ -55,13 +57,29 @@ class ScrollingBlocks extends ListView
         $view = $this->getView();
         WookmarkAsset::register($view);
         ScrollingBlocksAsset::register($view);
+        ImagesLoadedAsset::register($view);
         $id = $this->getId();
-        $input = 'jQuery("#' . $id . ' .item")';
-        $wallOptions = JSON::encode($this->wallOptions);
+        $input = '#' . $id . ' .item';
+        $pagination = $this->dataProvider->getPagination();
+        $limit = $pagination->getLimit();
+        $size = $pagination->getPageSize();
+        $page = $pagination->getPage();
+        $pageNumLabel = $pagination->pageParam;
+        $pageSizelabel = $pagination->pageSizeParam;
+
+        $data = JSON::encode(array(
+            'id' => $id,
+            'input' => $input,
+            'wallOptions' => $this->wallOptions,
+            'size' => $size,
+            'limit' => $limit,
+            'page' => $page,
+            'pageNumLabel' => $pageNumLabel,
+            'pageSizelabel' => $pageSizelabel
+        ));
         $view->registerJs("
-            $(window).load(function() {
-                {$input}.wookmark({$wallOptions});
-                $(window).trigger('resize');
+            $(function() {
+                yii.scrollingblocks.setup($data);
             });
             \n",
             View::POS_END
