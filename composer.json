@@ -16,6 +16,10 @@
         {
             "type": "vcs",
             "url": "git@github.com:damiandennis/imagesloaded.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:damiandennis/spin.js.git"
         }
     ],
     "minimum-stability": "dev",
@@ -24,7 +28,8 @@
         "php": ">=5.4",
         "damiandennis/Wookmark-jQuery": "dev-master",
         "damiandennis/imagesloaded": "dev-master",
-        "damiandennis/spin.js": "dev-master"
+        "damiandennis/spin.js": "dev-master",
+        "components/modernizr": "2.6.2"
     },
     "autoload": {
         "psr-4": {
