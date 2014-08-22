@@ -18,7 +18,7 @@ echo ScrollingBlocks::widget([
     'dataProvider' => $dataProvider,
     'itemView' => '_view',
     'wallOptions' => [
-      'itemWidth' => 200
+      'itemWidth' => 200,
       'offset' => 5,
       'autoResize' => true,
       'flexibleWidth' => '20%', //This can be determined by the responsive widths below.
