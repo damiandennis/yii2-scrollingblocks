@@ -8,5 +8,11 @@
 }
 
 .scroll-block-view .item img {
-  max-width: 100%;
+  max-width: 200%;
+}
+
+.spinner-wrapper {
+  position: relative;
+  margin: 10px auto;
+  height: 20px;
 }

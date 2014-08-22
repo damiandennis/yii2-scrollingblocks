@@ -7,12 +7,6 @@
 
 namespace damiandennis\scrollingblocks;
 
-/**
- * Asset bundle for ColorInput Widget
- *
- * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @since 1.0
- */
 class ScrollingBlocksAsset extends AssetBundle
 {
 

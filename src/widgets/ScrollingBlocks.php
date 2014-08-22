@@ -19,33 +19,37 @@ class ScrollingBlocks extends ListView
     public $wallOptions = [
         'autoResize' => true,
         'align' => 'left',
-        'flexibleWidth' => true,
-        'itemWidth' => '33%',
-        'offset' => 0,
+        'flexibleWidth' => '20%',
+        'itemWidth' => '200',
+        'offset' => 5,
+        'fillEmptySpace' => true
     ];
-    private $models;
+    public $responsiveWidths = [];
+    public $columns = null;
+    public $min_width = null;
 
     public function init()
     {
-        $models = $this->dataProvider->getModels();
+        //$models = $this->dataProvider->getModels();
         parent::init();
         $id = $this->getId();
         if (isset($this->itemOptions['class'])) {
             $this->itemOptions['class'] .= ' item';
-        }
-        else {
+        } else {
             $this->itemOptions['class'] = 'item';
         }
         if (isset($this->options['class'])) {
             $this->options['class'] .= ' scroll-block-view clearfix';
-        }
-        else {
+        } else {
             $this->options['class'] = 'scroll-block-view clearfix';
         }
         if (!isset($this->options['id'])) {
             $this->options['id'] = $id;
         }
         $this->wallOptions['container'] = new JsExpression("$('#{$id}')");
+        if ($this->columns) {
+            $wallOptions['itemwidth'] = (100 / $this->columns).'%';
+        }
         $this->registerPluginAssets();
     }
 
@@ -58,6 +62,8 @@ class ScrollingBlocks extends ListView
         WookmarkAsset::register($view);
         ScrollingBlocksAsset::register($view);
         ImagesLoadedAsset::register($view);
+        SpinJsAsset::register($view);
+        ModernizrAsset::register($view);
         $id = $this->getId();
         $input = '#' . $id . ' .item';
         $pagination = $this->dataProvider->getPagination();
@@ -67,7 +73,7 @@ class ScrollingBlocks extends ListView
         $pageNumLabel = $pagination->pageParam;
         $pageSizelabel = $pagination->pageSizeParam;
 
-        $data = JSON::encode(array(
+        $data = JSON::encode([
             'id' => $id,
             'input' => $input,
             'wallOptions' => $this->wallOptions,
@@ -75,15 +81,15 @@ class ScrollingBlocks extends ListView
             'limit' => $limit,
             'page' => $page,
             'pageNumLabel' => $pageNumLabel,
-            'pageSizelabel' => $pageSizelabel
-        ));
-        $view->registerJs("
-            $(function() {
+            'pageSizelabel' => $pageSizelabel,
+            'responsiveWidths' => $this->responsiveWidths
+        ]);
+        $view->registerJs(
+            "$(function() {
                 yii.scrollingblocks.setup($data);
             });
             \n",
             View::POS_END
         );
     }
-
 }
