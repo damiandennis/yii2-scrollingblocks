@@ -5,7 +5,7 @@ This is a pinterest style layout using the wookmark jquery plugin with scrolling
 
 Install via composer:
 
-```bash
+```sh
 php composer.phar --prefer-dist --stability=dev damiandennis/yii2-scrollingblocks
 ```
 
