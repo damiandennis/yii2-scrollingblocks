@@ -13,7 +13,9 @@ yii.scrollingblocks = (function ($) {
         limit: 0,
         locked: false,
         init: function() {},
-        setup: function(data) {
+
+        setup: function(data)
+        {
             pub.tiles = $('#'+data.id);
             pub.handler = $('.item', pub.tiles);
             pub.data = data;
@@ -37,7 +39,9 @@ yii.scrollingblocks = (function ($) {
             });
 
         },
-        applyLayout: function() {
+
+        applyLayout: function()
+        {
             var $tiles = pub.tiles;
 
             $tiles.imagesLoaded(function() {
@@ -46,53 +50,70 @@ yii.scrollingblocks = (function ($) {
                 pub.handler.wookmark(pub.data.wallOptions);
             });
         },
-        onScroll: function() {
+
+        onScroll: function()
+        {
             // Check if we're within 100 pixels of the bottom edge of the browser window.
             var winHeight = window.innerHeight ? window.innerHeight : pub.window.height(), // iphone fix
                 closeToBottom = (pub.window.scrollTop() + winHeight > pub.document.height() - 100);
 
-            if (closeToBottom && !pub.locked) {
-                var $tiles = pub.tiles;
-                var data = {ajax: true};
-                pub.data.page ++;
-                data[pub.data.pageNumLabel] = pub.data.page;
-                data[pub.data.pageSizelabel] = pub.data.size;
-                pub.locked = true;
-                var opts = {
-                    lines: 9, // The number of lines to draw
-                    length: 0, // The length of each line
-                    width: 7, // The line thickness
-                    radius: 10, // The radius of the inner circle
-                    corners: 1, // Corner roundness (0..1)
-                    rotate: 0, // The rotation offset
-                    direction: 1, // 1: clockwise, -1: counterclockwise
-                    color: '#000', // #rgb or #rrggbb or array of colors
-                    speed: 1, // Rounds per second
-                    trail: 60, // Afterglow percentage
-                    shadow: false, // Whether to render a shadow
-                    hwaccel: false, // Whether to use hardware acceleration
-                    className: 'spinner', // The CSS class to assign to the spinner
-                    zIndex: 2e9, // The z-index (defaults to 2000000000)
-                    top: '50%', // Top position relative to parent
-                    left: '50%' // Left position relative to parent
-                };
-                var spinner = $('<div class="spinner-wrapper"></div>');
-                $tiles.after(spinner);
-                spinner.spin(opts);
-                $.ajax({
-                    url: location.href,
-                    data: data,
-                    success: function(html) {
-                        var $new_tiles = $('#'+pub.data.id, html);
-                        var $items = $('.item', $new_tiles);
-                        $tiles.append($items);
-                        pub.applyLayout();
-                        pub.locked = false;
-                        spinner.remove();
-                        pub.window = $(window);
+            if (closeToBottom && !pub.locked && pub.data.total != pub.data.page) {
+                pub.fetchNewData();
+            }
+        },
+        fetchNewData: function() {
+            var $tiles = pub.tiles;
+            var data = {ajax: true};
+            if (pub.data.filterForm) {
+                var filters = $(pub.data.filterForm).serializeArray();
+                $.each(filters, function(key, filter) {
+                    if (filter.value.length) {
+                        data[filter.name] = filter.value;
                     }
                 });
             }
+            pub.data.page ++;
+            data[pub.data.pageNumLabel] = pub.data.page;
+            data[pub.data.pageSizeLabel] = pub.data.size;
+            pub.locked = true;
+            var opts = {
+                lines: 9, // The number of lines to draw
+                length: 0, // The length of each line
+                width: 7, // The line thickness
+                radius: 10, // The radius of the inner circle
+                corners: 1, // Corner roundness (0..1)
+                rotate: 0, // The rotation offset
+                direction: 1, // 1: clockwise, -1: counterclockwise
+                color: '#000', // #rgb or #rrggbb or array of colors
+                speed: 1, // Rounds per second
+                trail: 60, // Afterglow percentage
+                shadow: false, // Whether to render a shadow
+                hwaccel: false, // Whether to use hardware acceleration
+                className: 'spinner', // The CSS class to assign to the spinner
+                zIndex: 2e9, // The z-index (defaults to 2000000000)
+                top: '50%', // Top position relative to parent
+                left: '50%' // Left position relative to parent
+            };
+            var spinner = $('<div class="spinner-wrapper"></div>');
+            $tiles.after(spinner);
+            spinner.spin(opts);
+
+            $.ajax({
+                url: location.href,
+                data: data,
+                success: function(html) {
+                    var $new_tiles = $('#'+pub.data.id, html);
+                    var $items = $('.item', $new_tiles);
+                    $tiles.append($items);
+                    pub.applyLayout();
+                    pub.locked = false;
+                    spinner.remove();
+                    pub.window = $(window);
+                    if (pub.data.callback) {
+                        pub.data.callback(html);
+                    }
+                }
+            });
         }
     }
     return pub;

@@ -8,6 +8,8 @@
 namespace damiandennis\scrollingblocks;
 
 use Yii;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ListView;
 use yii\helpers\Json;
@@ -27,10 +29,11 @@ class ScrollingBlocks extends ListView
     public $responsiveWidths = [];
     public $columns = null;
     public $min_width = null;
+    public $callback = null;
+    public $filterForm = null;
 
     public function init()
     {
-        //$models = $this->dataProvider->getModels();
         parent::init();
         $id = $this->getId();
         if (isset($this->itemOptions['class'])) {
@@ -50,7 +53,15 @@ class ScrollingBlocks extends ListView
         if ($this->columns) {
             $wallOptions['itemwidth'] = (100 / $this->columns).'%';
         }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function renderItems()
+    {
         $this->registerPluginAssets();
+        return parent::renderItems();
     }
 
     /**
@@ -64,14 +75,16 @@ class ScrollingBlocks extends ListView
         ImagesLoadedAsset::register($view);
         SpinJsAsset::register($view);
         ModernizrAsset::register($view);
+
         $id = $this->getId();
         $input = '#' . $id . ' .item';
         $pagination = $this->dataProvider->getPagination();
+        $total = $pagination->getPageCount();
         $limit = $pagination->getLimit();
         $size = $pagination->getPageSize();
         $page = $pagination->getPage();
         $pageNumLabel = $pagination->pageParam;
-        $pageSizelabel = $pagination->pageSizeParam;
+        $pageSizeLabel = $pagination->pageSizeParam;
 
         $data = JSON::encode([
             'id' => $id,
@@ -80,9 +93,11 @@ class ScrollingBlocks extends ListView
             'size' => $size,
             'limit' => $limit,
             'page' => $page,
+            'total' => $total,
             'pageNumLabel' => $pageNumLabel,
-            'pageSizelabel' => $pageSizelabel,
-            'responsiveWidths' => $this->responsiveWidths
+            'pageSizeLabel' => $pageSizeLabel,
+            'responsiveWidths' => $this->responsiveWidths,
+            'callback' => new JsExpression($this->callback),
         ]);
         $view->registerJs(
             "$(function() {
@@ -91,5 +106,6 @@ class ScrollingBlocks extends ListView
             \n",
             View::POS_END
         );
+
     }
 }
