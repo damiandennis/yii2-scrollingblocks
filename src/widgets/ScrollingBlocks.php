@@ -98,6 +98,7 @@ class ScrollingBlocks extends ListView
             'pageSizeLabel' => $pageSizeLabel,
             'responsiveWidths' => $this->responsiveWidths,
             'callback' => new JsExpression($this->callback),
+            'filterForm' => $this->filterForm,
         ]);
         $view->registerJs(
             "$(function() {
