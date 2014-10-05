@@ -18,7 +18,7 @@ class ImagesLoadedAsset extends AssetBundle
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../../../imagesloaded');
+        $this->setSourcePath(__DIR__ . '/../../../../bower-asset/imagesloaded');
         $this->setupAssets('js', ['imagesloaded.pkgd']);
         parent::init();
     }

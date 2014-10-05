@@ -12,7 +12,7 @@ class ModernizrAsset extends AssetBundle
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../../../../components/modernizr');
+        $this->setSourcePath(__DIR__ . '/../../../../bower-asset/modernizr');
         $this->setupAssets('js', ['modernizr']);
         parent::init();
     }

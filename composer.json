@@ -12,10 +12,10 @@
     "type": "yii2-extension",
     "require": {
         "php": ">=5.4",
-        "damiandennis/wookmark-jquery": "dev-master",
-        "damiandennis/imagesloaded": "dev-master",
-        "damiandennis/spin.js": "dev-master",
-        "components/modernizr": "2.6.2"
+        "bower-asset/GBKS/Wookmark-jQuery": "1.4.8",
+        "bower-asset/imagesloaded": "v3.1.8",
+        "bower-asset/spin.js": "2.0.1",
+        "bower-asset/modernizr": "2.6.2"
     },
     "autoload": {
         "psr-4": {
