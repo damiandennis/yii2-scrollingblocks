@@ -12,7 +12,7 @@
     "type": "yii2-extension",
     "require": {
         "php": ">=5.4",
-        "bower-asset/GBKS/Wookmark-jQuery": "1.4.8",
+        "bower-asset/Wookmark-jQuery": "1.4.8",
         "bower-asset/imagesloaded": "v3.1.8",
         "bower-asset/spin.js": "2.0.1",
         "bower-asset/modernizr": "2.6.2"
