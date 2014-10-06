@@ -18,7 +18,7 @@ class WookmarkAsset extends AssetBundle
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../../../../bower-asset/wookmark-jquery');
+        $this->setSourcePath(__DIR__ . '/../../../../bower/wookmark-jquery');
         $this->setupAssets('js', ['jquery.wookmark']);
         parent::init();
     }

@@ -12,7 +12,7 @@ class SpinJsAsset extends AssetBundle
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../../../../bower-asset/spin.js');
+        $this->setSourcePath(__DIR__ . '/../../../../bower/spin.js');
         $this->setupAssets('js', ['spin','jquery.spin']);
         parent::init();
     }
