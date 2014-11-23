@@ -34,6 +34,9 @@ yii.scrollingblocks = (function ($) {
                             pub.handler.wookmark(newOptions);
                         }
                     });
+                    if (typeof data.onLoad != 'undefined') {
+                        data.onLoad();
+                    }
                 });
                 pub.window.trigger('resize');
             });

@@ -31,6 +31,7 @@ class ScrollingBlocks extends ListView
     public $min_width = null;
     public $callback = null;
     public $filterForm = null;
+    public $onLoad = null;
 
     public function init()
     {
@@ -99,6 +100,7 @@ class ScrollingBlocks extends ListView
             'responsiveWidths' => $this->responsiveWidths,
             'callback' => new JsExpression($this->callback),
             'filterForm' => $this->filterForm,
+            'onLoad' => new JsExpression($this->onLoad),
         ]);
         $view->registerJs(
             "$(function() {
