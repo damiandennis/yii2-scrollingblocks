@@ -6,7 +6,7 @@ This is a pinterest style layout using the wookmark jquery plugin with infinite 
 Install via composer:
 
 ```sh
-php composer.phar --prefer-dist --stability=dev damiandennis/yii2-scrollingblocks
+php composer.phar require --prefer-dist damiandennis/yii2-scrollingblocks
 ```
 
 To use the widget:
