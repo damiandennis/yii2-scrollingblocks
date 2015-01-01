@@ -9,6 +9,11 @@ Install via composer:
 php composer.phar require --prefer-dist damiandennis/yii2-scrollingblocks
 ```
 
+You will also need to change your minimum stability in your composer.json to dev
+```js
+"minimum-stability": "dev",
+```
+
 To use the widget:
 
 ```php

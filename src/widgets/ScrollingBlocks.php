@@ -100,7 +100,7 @@ class ScrollingBlocks extends ListView
             'responsiveWidths' => $this->responsiveWidths,
             'callback' => new JsExpression($this->callback),
             'filterForm' => $this->filterForm,
-            'onLoad' => new JsExpression($this->onLoad),
+            'onLoad' => new JsExpression($this->onLoad ?: ''),
         ]);
         $view->registerJs(
             "$(function() {
