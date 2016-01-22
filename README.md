@@ -1,6 +1,9 @@
 Scrolling Blocks
 ===============
 
+* No Longer under active development (Looking for maintainer) *
+
+
 This is a pinterest style layout using the wookmark jquery plugin with infinite scrolling and responsive capabilities built in.
 
 Install via composer:
